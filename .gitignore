@@ -1,0 +1,11 @@
+data/
+artifacts/
+__pycache__/
+*.pth
+*.pt
+
+*.py[cod]
+*$py.class
+*.egg-info/
+venv/
+.env
