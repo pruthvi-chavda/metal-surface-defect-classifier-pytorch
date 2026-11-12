@@ -31,14 +31,15 @@ class MetalDefectCNN(nn.Module):
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2),
             
-            nn.AdaptiveMaxPool2d((1, 1))
+            nn.AdaptiveAvgPool2d((2, 2))
         )
       
         self.classifier = nn.Sequential(
             nn.Flatten(),
-            nn.Linear(in_features=256, out_features=128),
+            
+            nn.Linear(in_features=1024, out_features=128),
             nn.ReLU(),
-            nn.Dropout(p=0.5), # Kills 50% of neurons to aggressively stop overfitting on micro-batches
+            nn.Dropout(p=0.5),
             nn.Linear(in_features=128, out_features=num_classes)
         )
 
