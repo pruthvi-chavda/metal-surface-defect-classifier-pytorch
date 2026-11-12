@@ -1,0 +1,1 @@
+image_folder_path = "E:/Projects/metal-surface-defect-classifier-pytorch/data/raw/images"
