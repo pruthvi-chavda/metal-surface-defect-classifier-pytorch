@@ -14,10 +14,12 @@ def train_model():
 
     criterion = nn.CrossEntropyLoss()
 
+    optimizer = optim.Adam(model.parameters(), lr=3e-4, weight_decay=1e-4)
+    scheduler = optim.lr_scheduler.ReduceLROnPlateau(
+        optimizer, mode='min', factor=0.5, patience=3
+    )
 
-    optimizer = optim.Adam(model.parameters(), lr=0.001, weight_decay=1e-4)
-
-    num_epochs = 10
+    num_epochs = 50
     best_val_loss = float('inf')
 
     for epoch in range(num_epochs):
@@ -66,10 +68,12 @@ def train_model():
               f"Train Loss: {avg_train_loss:.4f} | "
               f"Val Loss: {avg_val_loss:.4f} | "
               f"Val Acc: {val_accuracy:.2f}%")
+        
+        scheduler.step(avg_val_loss)
 
         if avg_val_loss < best_val_loss:
             best_val_loss = avg_val_loss
-            save_path = "E:/Projects/metal-surface-defect-classifier-pytorch/artifacts/best_model.pth"
+            save_path = "../artifacts/best_model.pth"
             torch.save(model.state_dict(), save_path)
             print(f"--> Checkpoint saved: {save_path}")
 
