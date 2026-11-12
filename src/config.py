@@ -1,1 +1,2 @@
-image_folder_path = "E:/Projects/metal-surface-defect-classifier-pytorch/data/raw/images"
+image_folder_path = "../data/raw/images/"
+
