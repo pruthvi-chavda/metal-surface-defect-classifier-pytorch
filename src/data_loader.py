@@ -3,7 +3,7 @@ from torchvision import datasets, transforms
 from torch.utils.data import DataLoader, Dataset, WeightedRandomSampler, Subset
 from sklearn.model_selection import train_test_split
 import numpy as np
-from src.config import image_folder_path
+from src.config import image_folder_path , cnn_batch_size
 
 
 train_transform = transforms.Compose([
@@ -71,8 +71,8 @@ sampler = WeightedRandomSampler(
 )
 
 
-train_loader = DataLoader(train_dataset, batch_size=4, sampler=sampler)
-test_loader = DataLoader(test_dataset, batch_size=4, shuffle=False)
+train_loader = DataLoader(train_dataset, batch_size=cnn_batch_size, sampler=sampler)
+test_loader = DataLoader(test_dataset, batch_size=cnn_batch_size, shuffle=False)
 
 if __name__ == "__main__":
     print(f"Training batches: {len(train_loader)}")

@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.optim as optim
 from src.data_loader import train_loader, test_loader
 from src.models.base_cnn import MetalDefectCNN
-
+from src.config import cnn_epoch
 def train_model():
    
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -19,7 +19,7 @@ def train_model():
         optimizer, mode='min', factor=0.5, patience=3
     )
 
-    num_epochs = 50
+    num_epochs = cnn_epoch
     best_val_loss = float('inf')
 
     for epoch in range(num_epochs):
