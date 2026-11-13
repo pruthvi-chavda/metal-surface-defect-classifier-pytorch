@@ -1,9 +1,12 @@
-data/
-artifacts/
+data/*
+artifacts/*
+
+!data/**/.gitkeep
+!artifacts/**/.gitkeep
+
 __pycache__/
 *.pth
 *.pt
-
 *.py[cod]
 *$py.class
 *.egg-info/
