@@ -3,18 +3,17 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.amp import autocast, GradScaler 
 from src.pretrained_data_loader import train_loader, test_loader
-from src.models.pretrained_models import MetalDefectEfficientNet, MetalDefectResNet
+from src.models.pretrained_models import MetalDefectEfficientNet, MetalDefectResNet,  MetalDefectEfficientNetUnfreezed
 from src.config import num_classes,pretrained_epoch
 
 def train_model():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"System Check: Executing on {device.type.upper()} with AMP Enabled")
 
-    model = MetalDefectEfficientNet(num_classes=num_classes).to(device)
+    model = MetalDefectEfficientNetUnfreezed(num_classes=num_classes).to(device)
     criterion = nn.CrossEntropyLoss()
 
-    # weight_decay=1e-4 acts as L2 Regularization
-    optimizer = optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=1e-3)
+    optimizer = optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=1e-4)
     scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=4)
     
     scaler = GradScaler('cuda')
@@ -51,7 +50,6 @@ def train_model():
             for images, labels in test_loader:
                 images, labels = images.to(device), labels.to(device)
                 
-                # NEW: Use AMP in validation for faster inference
                 with autocast('cuda', dtype=torch.float16):
                     outputs = model(images)
                     loss = criterion(outputs, labels)
@@ -73,9 +71,10 @@ def train_model():
 
         if avg_val_loss < best_val_loss:
             best_val_loss = avg_val_loss
-            save_path = "../artifacts/efficientnet_best.pth"
+            save_path = "../artifacts/MetalDefectEfficientNetUnfreezed.pth"
             torch.save(model.state_dict(), save_path)
             print(f"--> Checkpoint saved: {save_path}")
 
 if __name__ == "__main__":
     train_model()
+
