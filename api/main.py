@@ -3,13 +3,14 @@ import torch
 from torchvision import transforms
 from PIL import Image
 import io
-from src.models.pretrained_models import MetalDefectEfficientNet
+from src.models.pretrained_models import MetalDefectEfficientNetUnfreezed
+from src.config import num_classes
 
 app = FastAPI(title="Metal Defect Classifier API")
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model = MetalDefectEfficientNet(num_classes=10) 
-model.load_state_dict(torch.load("artifacts/efficientnet_best.pth", map_location=device))
+model = MetalDefectEfficientNetUnfreezed(num_classes=num_classes) 
+model.load_state_dict(torch.load("artifacts/demo.pth", map_location=device))
 model.to(device)
 model.eval()
 
@@ -20,7 +21,7 @@ inference_transform = transforms.Compose([
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 ])
 
-CLASS_NAMES = ["crease", "crescent_gap", "crescent_gap", "oil_spot", "punching_hole", "rolled_pit", "silk_spot", "waist folding", "water_spot", "welding_line"] 
+CLASS_NAMES = ["crease", "crescent_gap", "inclusion", "oil_spot", "punching_hole", "rolled_pit", "silk_spot", "waist folding", "water_spot", "welding_line"] 
 
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
