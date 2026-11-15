@@ -3,6 +3,7 @@ artifacts/*
 
 !data/**/.gitkeep
 !artifacts/**/.gitkeep
+!artifacts/metrics.txt
 
 __pycache__/
 *.pth

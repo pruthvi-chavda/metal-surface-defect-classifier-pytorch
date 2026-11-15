@@ -1,0 +1,64 @@
+
+
+####
+1. epoch = 50, Batch_size = 16, base_cnn model, trained using optimized_train.py
+--> Checkpoint saved: D:/projects/metal-surface-defect-classifier-pytorch/artifacts/best_model.pth
+Epoch [44/50] | Train Loss: 0.9196 | Val Loss: 1.0097 | Val Acc: 66.02%
+--> Checkpoint saved: D:/projects/metal-surface-defect-classifier-pytorch/artifacts/best_model.pth
+Epoch [45/50] | Train Loss: 0.9135 | Val Loss: 0.9800 | Val Acc: 67.97%
+--> Checkpoint saved: D:/projects/metal-surface-defect-classifier-pytorch/artifacts/best_model.pth
+Epoch [46/50] | Train Loss: 0.9222 | Val Loss: 0.9989 | Val Acc: 62.34%
+Epoch [47/50] | Train Loss: 0.8585 | Val Loss: 0.9439 | Val Acc: 67.97%
+--> Checkpoint saved: D:/projects/metal-surface-defect-classifier-pytorch/artifacts/best_model.pth
+Epoch [48/50] | Train Loss: 0.8385 | Val Loss: 0.9451 | Val Acc: 68.61%
+Epoch [49/50] | Train Loss: 0.8384 | Val Loss: 0.8915 | Val Acc: 69.70%
+--> Checkpoint saved: D:/projects/metal-surface-defect-classifier-pytorch/artifacts/best_model.pth
+Epoch [50/50] | Train Loss: 0.8610 | Val Loss: 0.9484 | Val Acc: 66.45%
+
+
+
+2. epoch = 25, Batch_size = 64, resnet model, trained using pretrained_train.py
+Epoch [22/25] | Train Loss: 0.6702 | Val Loss: 0.7333 | Val Acc: 75.97%
+Epoch [23/25] | Train Loss: 0.6396 | Val Loss: 0.7311 | Val Acc: 75.97%
+Epoch [24/25] | Train Loss: 0.6267 | Val Loss: 0.7260 | Val Acc: 75.11%
+--> Checkpoint saved: D:/projects/metal-surface-defect-classifier-pytorch/artifacts/resnet_best.pth
+Epoch [25/25] | Train Loss: 0.6456 | Val Loss: 0.7560 | Val Acc: 75.32%
+
+
+
+3. epoch = 30, Batch_size = 64, efficientnet model with freezed layers, trained using pretrained_train.py
+--> Checkpoint saved: D:/projects/metal-surface-defect-classifier-pytorch/artifacts/efficientnet_best.pth
+Epoch [26/30] | Train Loss: 0.5451 | Val Loss: 0.6972 | Val Acc: 76.84%
+Epoch [27/30] | Train Loss: 0.5715 | Val Loss: 0.6847 | Val Acc: 77.92%
+Epoch [28/30] | Train Loss: 0.5369 | Val Loss: 0.6738 | Val Acc: 77.71%
+--> Checkpoint saved: D:/projects/metal-surface-defect-classifier-pytorch/artifacts/efficientnet_best.pth
+Epoch [29/30] | Train Loss: 0.5504 | Val Loss: 0.6646 | Val Acc: 78.35%
+--> Checkpoint saved: D:/projects/metal-surface-defect-classifier-pytorch/artifacts/efficientnet_best.pth
+Epoch [30/30] | Train Loss: 0.5801 | Val Loss: 0.6894 | Val Acc: 78.57%
+
+
+4. epoch = 11, Batch_size = 64, efficientnet model with unfreezed top few layers, trained using pretrained_train.py
+System Check: Executing on CUDA with AMP Enabled
+Epoch [1/11] | Train Loss: 2.0861 | Val Loss: 1.9768 | Val Acc: 39.39%
+--> Checkpoint saved: D:/projects/metal-surface-defect-classifier-pytorch/artifacts/MetalDefectEfficientNetUnfreezed.pth
+Epoch [2/11] | Train Loss: 1.5672 | Val Loss: 1.3356 | Val Acc: 64.07%
+--> Checkpoint saved: D:/projects/metal-surface-defect-classifier-pytorch/artifacts/MetalDefectEfficientNetUnfreezed.pth
+Epoch [3/11] | Train Loss: 1.1665 | Val Loss: 0.9522 | Val Acc: 73.81%
+--> Checkpoint saved: D:/projects/metal-surface-defect-classifier-pytorch/artifacts/MetalDefectEfficientNetUnfreezed.pth
+Epoch [4/11] | Train Loss: 0.8245 | Val Loss: 0.7056 | Val Acc: 79.87%
+--> Checkpoint saved: D:/projects/metal-surface-defect-classifier-pytorch/artifacts/MetalDefectEfficientNetUnfreezed.pth
+Epoch [5/11] | Train Loss: 0.6166 | Val Loss: 0.5404 | Val Acc: 83.33%
+--> Checkpoint saved: D:/projects/metal-surface-defect-classifier-pytorch/artifacts/MetalDefectEfficientNetUnfreezed.pth
+Epoch [6/11] | Train Loss: 0.4787 | Val Loss: 0.4651 | Val Acc: 84.42%
+--> Checkpoint saved: D:/projects/metal-surface-defect-classifier-pytorch/artifacts/MetalDefectEfficientNetUnfreezed.pth
+Epoch [7/11] | Train Loss: 0.4207 | Val Loss: 0.4291 | Val Acc: 86.36%
+--> Checkpoint saved: D:/projects/metal-surface-defect-classifier-pytorch/artifacts/MetalDefectEfficientNetUnfreezed.pth
+Epoch [8/11] | Train Loss: 0.3409 | Val Loss: 0.4171 | Val Acc: 85.28%
+--> Checkpoint saved: D:/projects/metal-surface-defect-classifier-pytorch/artifacts/MetalDefectEfficientNetUnfreezed.pth
+Epoch [9/11] | Train Loss: 0.3160 | Val Loss: 0.4067 | Val Acc: 85.71%
+--> Checkpoint saved: D:/projects/metal-surface-defect-classifier-pytorch/artifacts/MetalDefectEfficientNetUnfreezed.pth
+Epoch [10/11] | Train Loss: 0.2860 | Val Loss: 0.3786 | Val Acc: 86.15%
+--> Checkpoint saved: D:/projects/metal-surface-defect-classifier-pytorch/artifacts/MetalDefectEfficientNetUnfreezed.pth
+Epoch [11/11] | Train Loss: 0.2538 | Val Loss: 0.3683 | Val Acc: 86.80%
+--> Checkpoint saved: D:/projects/metal-surface-defect-classifier-pytorch/artifacts/MetalDefectEfficientNetUnfreezed.pth
+
