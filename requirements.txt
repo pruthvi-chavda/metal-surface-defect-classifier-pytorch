@@ -1,0 +1,9 @@
+fastapi==0.163.1
+numpy==2.5.4
+Pillow==13.0.0
+Requests==2.34.2
+scikit_learn==1.9.1
+setuptools==65.5.0
+streamlit==1.67.0
+torch==2.5.1+cu121
+torchvision==0.20.1+cu121
